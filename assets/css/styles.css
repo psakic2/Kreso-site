@@ -235,18 +235,15 @@ a:hover { color: var(--accent-bright); }
 /* ─── Hero ─── */
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 92vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
-  padding: 8rem 1.5rem 4rem;
+  padding: 7rem 1.5rem 3rem;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 20% 10%, rgba(200, 99, 58, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 90%, rgba(30, 90, 138, 0.08) 0%, transparent 50%),
-    var(--bg);
+  background: var(--bg);
 }
 .hero-bg {
   position: absolute;
@@ -256,14 +253,69 @@ a:hover { color: var(--accent-bright); }
 .hero-bg img {
   width: 100%; height: 100%;
   object-fit: cover;
-  opacity: 0.45;
+  opacity: 1;
 }
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(251, 246, 236, 0.4) 0%, var(--bg) 100%);
+  background: linear-gradient(180deg,
+    rgba(251, 246, 236, 0.08) 0%,
+    transparent 22%,
+    transparent 92%,
+    rgba(251, 246, 236, 0.45) 99%,
+    var(--bg) 100%);
 }
+
+/* Hero text — VIVID ORANGE everywhere with hard dark stroke.
+   Pops on the dark car (orange on black = high contrast) AND on the light
+   buildings (the dark stroke gives the letters crisp definition). */
+.hero .brand-display,
+.hero .accent-tag,
+.hero .eyebrow,
+.hero-tagline,
+.hero-meta {
+  color: #ff8a3c;
+}
+.hero .brand-display {
+  text-shadow:
+    -2px -2px 0 rgba(0, 0, 0, 0.85),
+    2px -2px 0 rgba(0, 0, 0, 0.85),
+    -2px 2px 0 rgba(0, 0, 0, 0.85),
+    2px 2px 0 rgba(0, 0, 0, 0.85),
+    0 0 28px rgba(0, 0, 0, 0.55),
+    0 4px 12px rgba(0, 0, 0, 0.6);
+}
+.hero .accent-tag,
+.hero .eyebrow {
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.8),
+    1px -1px 0 rgba(0, 0, 0, 0.8),
+    -1px 1px 0 rgba(0, 0, 0, 0.8),
+    1px 1px 0 rgba(0, 0, 0, 0.8),
+    0 0 16px rgba(0, 0, 0, 0.55),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+}
+.hero-tagline {
+  font-weight: 600;
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.8),
+    1px -1px 0 rgba(0, 0, 0, 0.8),
+    -1px 1px 0 rgba(0, 0, 0, 0.8),
+    1px 1px 0 rgba(0, 0, 0, 0.8),
+    0 0 16px rgba(0, 0, 0, 0.6),
+    0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.hero-meta {
+  font-weight: 600;
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.8),
+    1px -1px 0 rgba(0, 0, 0, 0.8),
+    -1px 1px 0 rgba(0, 0, 0, 0.8),
+    1px 1px 0 rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(0, 0, 0, 0.55);
+}
+.hero-meta .ico { color: #ff8a3c; }
 .hero-content { position: relative; z-index: 1; max-width: 900px; }
 .hero-badge {
   display: inline-flex;
@@ -293,14 +345,14 @@ a:hover { color: var(--accent-bright); }
 .hero .accent-tag {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
-  color: var(--accent);
+  color: #ff8a3c;
   font-size: clamp(1.2rem, 2.4vw, 1.7rem);
   display: block;
   margin-top: 0.5rem;
 }
 .hero-tagline {
   font-size: clamp(1.05rem, 1.7vw, 1.25rem);
-  color: var(--text-dim);
+  color: #ff8a3c;
   max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.65;
@@ -318,11 +370,11 @@ a:hover { color: var(--accent-bright); }
   gap: 1.6rem;
   justify-content: center;
   flex-wrap: wrap;
-  color: var(--text-faint);
+  color: #ff8a3c;
   font-size: 0.85rem;
 }
 .hero-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
-.hero-meta .ico { color: var(--accent); font-size: 1rem; }
+.hero-meta .ico { color: #ff8a3c; font-size: 1rem; }
 
 /* ─── Page header (inner pages) ─── */
 .page-head {
@@ -401,6 +453,313 @@ a:hover { color: var(--accent-bright); }
 }
 .service-desc { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; }
 
+/* ─── Airport transfer (fixed-price hero section) ─── */
+.section-airport {
+  background:
+    radial-gradient(ellipse at 0% 50%, rgba(30, 90, 138, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 50%, rgba(200, 99, 58, 0.06) 0%, transparent 55%),
+    var(--bg);
+}
+.airport-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 1.8rem;
+  align-items: stretch;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.airport-pricing {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.9rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+.airport-price-tag {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.32rem 0.9rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+.airport-price {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.6rem, 8.5vw, 5.4rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 0.2rem 0 0.4rem;
+}
+.airport-price-meta {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.01em;
+}
+.airport-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.6rem;
+}
+.airport-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.94rem;
+  color: var(--text-dim);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+.airport-features li:last-child { border-bottom: none; }
+.airport-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.airport-cta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.airport-map-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-height: 380px;
+}
+.airport-map-wrap #airport-map {
+  flex: 1;
+  min-height: 320px;
+  margin: 0;
+  border-radius: 14px;
+}
+.airport-distance {
+  padding: 0.85rem 1.1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.airport-distance-label {
+  color: var(--text);
+  font-weight: 700;
+}
+.airport-distance-sep {
+  margin: 0 0.4rem;
+  color: var(--text-faint);
+}
+.airport-distance-route {
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+.airport-distance-sub {
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  font-style: italic;
+  margin-left: 0.45rem;
+  font-weight: 400;
+}
+
+/* Map pins for airport map */
+.pm-split-center {
+  width: 26px; height: 26px;
+  background: var(--accent);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(200, 99, 58, 0.30), 0 2px 8px rgba(0,0,0,0.20);
+}
+.pm-airport {
+  width: 38px; height: 38px;
+  background: var(--blue);
+  color: #fff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  box-shadow: 0 0 0 5px rgba(30, 90, 138, 0.25), 0 2px 8px rgba(0,0,0,0.20);
+}
+.pm-distance {
+  background: #fff;
+  color: var(--text);
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.airport-price-note {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  margin: 0.2rem 0 1.4rem;
+  padding: 0.7rem 0.9rem;
+  background: rgba(30, 90, 138, 0.05);
+  border-left: 3px solid var(--blue);
+  border-radius: 4px;
+  line-height: 1.55;
+}
+.airport-price-note strong { color: var(--text); font-weight: 700; }
+.airport-price-note a { color: var(--blue); font-weight: 600; }
+.airport-price-note a:hover { color: var(--blue-bright); }
+
+@media (max-width: 900px) {
+  .airport-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+  .airport-map-wrap { min-height: 320px; }
+  .airport-map-wrap #airport-map { min-height: 280px; }
+  .airport-cta .btn { flex: 1; justify-content: center; }
+}
+
+/* ─── Meet the driver (about) ─── */
+.section-about { background: var(--bg-soft); }
+.about-heading-nick {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  font-size: 0.95em;
+  letter-spacing: 0.005em;
+}
+.about-grid {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.about-portrait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+.about-portrait-frame {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(200, 99, 58, 0.18) 0%, rgba(30, 90, 138, 0.18) 100%),
+    var(--bg-card);
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+.about-portrait-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.about-portrait-placeholder {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--text-faint);
+  font-size: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+.about-portrait-frame:has(img) .about-portrait-placeholder { display: none; }
+.about-name-card { text-align: center; }
+.about-name-card strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.about-name-nick {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1.05rem;
+  margin-top: 0.15rem;
+}
+.about-name-pron {
+  display: block;
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  margin-top: 0.4rem;
+}
+.about-name-pron em { font-style: italic; color: var(--text-dim); font-weight: 600; }
+.about-bio p {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.about-bio p strong { color: var(--text); font-weight: 600; }
+.about-bio p em {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05em;
+  color: var(--text);
+}
+.about-quickfacts {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.5rem;
+}
+.about-quickfacts li {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  line-height: 1.5;
+}
+.about-quickfacts li:nth-last-child(-n+2) { border-bottom: none; }
+.about-fact-ico {
+  color: var(--accent);
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  margin-top: 1px;
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+  .about-portrait-frame { max-width: 240px; }
+  .about-quickfacts { grid-template-columns: 1fr; }
+  .about-quickfacts li:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .about-quickfacts li:last-child { border-bottom: none; }
+}
+
 /* ─── Offer cards (excursions) ─── */
 .offer-grid {
   display: grid;
@@ -429,6 +788,66 @@ a:hover { color: var(--accent-bright); }
   justify-content: flex-start;
   padding: 0.9rem;
 }
+/* ─── Flexible pricing banner ─── */
+.pricing-note {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.4rem 1.8rem;
+  background:
+    linear-gradient(135deg, rgba(224, 160, 57, 0.10) 0%, rgba(200, 99, 58, 0.10) 100%),
+    var(--bg-card);
+  border: 1px solid var(--accent-faint);
+  border-radius: 14px;
+  margin-bottom: 2.2rem;
+  box-shadow: var(--shadow-sm);
+}
+.pricing-note-ico {
+  width: 52px; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: rgba(224, 160, 57, 0.18);
+  color: #95610f;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pricing-note-text {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.pricing-note-text strong {
+  display: block;
+  color: var(--text);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0;
+}
+.pricing-note-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.pricing-note-actions .btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+}
+@media (max-width: 900px) {
+  .pricing-note {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1.6rem 1.4rem;
+    gap: 1rem;
+  }
+  .pricing-note-ico { margin: 0 auto; }
+  .pricing-note-actions { justify-content: center; flex-wrap: wrap; }
+}
+
 .offer-photo::before {
   content: 'Photo coming soon';
   position: absolute;
@@ -485,6 +904,18 @@ a:hover { color: var(--accent-bright); }
   padding-top: 0.9rem;
   border-top: 1px solid var(--border);
 }
+.offer-quote-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.2s, gap 0.2s;
+}
+.offer-quote-link:hover { color: var(--accent-bright); gap: 0.5rem; }
 .offer-price {
   font-family: 'Playfair Display', serif;
   color: var(--accent);
